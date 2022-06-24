@@ -103,26 +103,58 @@ namespace Kabanova_Lab_10_WPF
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Random rand = new Random();
-            int[,] matrix = new int[n, m];
-            int sum = 0;
-            for (int j = 0; j < n; j++)
+            //Random rand = new Random();
+            //int[,] matrix = new int[n, m];
+            //int sum = 0;
+            //for (int j = 0; j < n; j++)
+            //{
+            //    for (int q = 0; q < m; q++)
+            //    {
+            //        matrix[j, q] = rand.Next(10, 100);
+
+            //    }
+            //    if ((j + 1) % 2 == 0)
+
+            //    {
+            //        for (int i = 0; i < m; i++)
+            //        {
+            //            sum += matrix[j, i];
+            //        }
+            //    }
+            //}
+
+
+            List<int[,]> list = ReadMatrix(Environment.CurrentDirectory + "\\first.txt");
+            for (int w = 0; w < list.Count; w++)
             {
-                for (int q = 0; q < m; q++)
+                int s = 0;
+                for (int i = 0; i < m; i++)
                 {
-                    matrix[j, q] = rand.Next(10, 100);
+                    for (int j = 0; j < n; j++)
+                    {
+                        if (list[w][i, j] > 0 && list[w][i, j] % 2)
+                            s += list[w][i, j];
+
+                    }
 
                 }
-                if ((j + 1) % 2 == 0)
-
+                if (s % 2 != 0)
                 {
+                    int s2 = 0;
                     for (int i = 0; i < m; i++)
                     {
-                        sum += matrix[j, i];
+                        for (int j = 0; j < n; j++)
+                        {
+                            if (list[w][i, j] > 0 && list[w][i, j] % 2)
+                                s += list[w][i, j];
+
+                        }
+
                     }
+
                 }
             }
-            
+
         }
 
     }
